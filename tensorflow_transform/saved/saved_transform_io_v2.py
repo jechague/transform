@@ -151,6 +151,7 @@ class SavedModelLoader(object):
     remapped_inputs = {}
     feeds = []
     for name in six.iterkeys(input_map):
+      print(name)
       tensor = self._wrapped.graph.get_tensor_by_name(name)
       tensor.shape.assert_is_compatible_with(input_map[name].shape)
       remapped_inputs[tensor.op.name] = input_map[name]
